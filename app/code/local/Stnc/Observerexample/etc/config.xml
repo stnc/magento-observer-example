@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Stnc
+ * @package    Stnc_Observerexample
+ * @author     extensions@Stnc.com
+ * @website    http://www.selmantunc.com
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+  <modules>
+      <Stnc_Observerexample>
+          <version>0.0.2</version>
+      </Stnc_Observerexample>
+  </modules>
+  <global>
+    <models>
+        <Stncautofeedback>
+             <class>Observerexample_Model</class>
+        </Stncautofeedback>
+    </models>
+    <events>
+      <checkout_onepage_controller_success_action>
+        <observers>
+          <sales_order_place_before>
+            <type>singleton</type>
+            <class>Stnc_Observerexample_Model_Observer</class>
+            <method>send_email</method>
+          </sales_order_place_before>
+        </observers>
+      </checkout_onepage_controller_success_action>     
+    </events>
+  </global>
+</config>
